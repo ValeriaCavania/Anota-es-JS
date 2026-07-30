@@ -136,5 +136,58 @@ função() (chamada sozinha) --> this é undefined.
 
 
 ## CALL( ) ##
+Para entender o call, partirei do exemplo do objeto carro:
+```
+const carro = {
+  marca: "Ford",
+  ano: 2018
+};
+```
+```
+function descricaoCarro(){
+  console.log(this.marca + " " + this.ano);
+}
+```
+Como visto, se executar descricaoCarro() o this será undefined. A função sabe o que precisa fazer que é imprimir marca e ano, mas ela não sabe de quem imprimir. É como se perguntasse: "Preciso imprimir marca/ano, mas de qual objeto?".
+**Solução: call()**
+O call diz: "Use ESTE objeto como this". 
+Sintaxe: funcao.call(objeto) --> descricaoCarro.call(carro);
+Traduzindo a linha de cima: Execute descricaoCarro, mas considere que o this será o objeto carro. Então this = carro.
+Importante: Call() não altera a função no sentido dela virar função de carro, ela apenas foi executada uma vez usando determinado objeto.
+Exemplo:
+```
+const pessoa = {
+  nome: "Valéria",
+  idade: 27
+};
+```
+E uma função separada:
+```
+function apresentar(){
+  console.log(Meu nome é ${this.nome} e tenho ${this.idade} anos);
+}
+```
+Se fizer: apresentar() não funciona, porque this === undefined. 
+Agora: apresentar.call(pessoa), o resultado será: Meu nome é Valéria e tenho 27 anos.
+Agora outro exemplo para provar que a função é reutilizável com outro objeto:
+```
+const aluno = {
+  nome: "Joao",
+  idade: 20,
+};
+apresentar.call(aluno);
+```
+O resultado será: Meu nome é Joao e tenho 20 anos.
+Vantagem: A mesma função serviu para objetos diferentes.
 
-**Functions** e **CALL()**
+Seguindo o exemplo da aula:
+```
+descricaoCarro.call(carro);
+```
+É possível entender que o JS fez a função "olhar" para o objeto carro. Toda FUNÇÃO possui o método call(), nesse caso, está usando o método call na função descricaoCarro. Isso não significa que "carro chamou a função". E sim que: "A função usou o seu método call() para definir que será o this". Portanto, a função usa o método call para definir quem será o this apenas durante a execução, ou seja, executar descricaoCarro() utilizando o objeto livro como CONTEXTO de this.
+
+O call() pode receber mais argumentos - Sintaxe completa:
+```
+funcao.call(this, arg1, arg2, arg3...)
+```
+

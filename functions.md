@@ -1,4 +1,4 @@
-#Functions#
+# Functions #
 
 **Introdução**
 ```
@@ -135,4 +135,4 @@ objeto.metodo() --> this é o objeto.
 função() (chamada sozinha) --> this é undefined.
 
 
-##CALL()##
+## CALL( ) ##

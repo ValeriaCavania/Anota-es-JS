@@ -1,4 +1,5 @@
 #Functions#
+
 **Introdução**
 ```
 function Quadrado(lado){
@@ -133,3 +134,5 @@ window.ano --> Undefined.
 objeto.metodo() --> this é o objeto.
 função() (chamada sozinha) --> this é undefined.
 
+
+##CALL()##

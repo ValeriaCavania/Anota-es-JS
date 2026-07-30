@@ -1,1 +1,4 @@
-***Functions***
+#Functions#
+```
+console.log(calcular(4));
+```

@@ -136,3 +136,5 @@ função() (chamada sozinha) --> this é undefined.
 
 
 ## CALL( ) ##
+
+**Functions** e **CALL()**

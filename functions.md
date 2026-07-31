@@ -192,4 +192,78 @@ funcao.call(this, arg1, arg2, arg3...)
 ```
 Exemplo:
 ```
+const Pessoa = {
+  nome: "Valéria"
+};
+function apresentar(cidade, nome) {
+  console.log(`${this.nome} mora em ${this.cidade} e tem ${idade} anos`);
+}
 ```
+A função possui dois parâmetros: cidade e idade. Então:
+```
+apresentar.call(pessoa, "São Paulo", 28);
+```
+O this será pessoa, definido pelo call(), o JS enxerga:
+this.nome = Valéria
+cidade = São Paulo
+idade = 27
+**Regra: No call o primeiro argumento sempre será o this**
+**Quando o this = null:**
+```
+function somar(a+b){
+  console.log(a+b);
+}
+somar.call(null, 10, 20);
+```
+This = null porque essa função não utiliza o this.
+
+## APPLY( ) ##
+Sintaxe:
+```
+funcao.apply(this, [arg1, arg2, arg3];
+```
+Exemplo:
+```
+Math.max.apply(null, [10,5,30,8];
+```
+No call os argumentos vem separado por (,) e no apply os argumentos vem dentro de um array.
+Exemplo:
+```
+const numeros = [23,369,21,54,63];
+Math.max(numeros);
+```
+O retorno será Nan, porque Math.max espera receber assim:
+Math.max(23,369,21,54,63) e não assim Math.max([23,369,21,54,63]) já que ele ve o array todo como o primeiro argumento e não cinco argumentos diferentes.
+Então ao fazer: 
+```
+Math.max.apply(null, numeros);
+```
+O JS vê: Math.max(23,369,21,54,63);
+**O que o JS faz por baixo dos panos quando usa-se apply?**
+Faz o mesmo que o operador spreed:
+```
+const numeros = [23,369,21,54,63];
+Math.max(...numeros);
+```
+Transforma o array numeros em 23, 369, 21, 54, 63. Essa declaração tem o mesmo efeito que Math.max.apply(null, numeros).
+Portanto o apply faz o mesmo que o call, mas recebe os argumentos em um array.
+
+## BIND( ) ##
+Cria uma nova função que quando for executada vai chamar a função original usando o this.
+```
+function descricaoCarro(){
+  console.log(this.marca);
+}
+```
+descricaoCarro.call(carro); --> This = carro, executa a função e acabou.
+
+```
+const novaFuncao = descricaoCarro.bind(carro);
+```
+Nesse caso, nada é executado, apenas criou-se uma nova função, ou seja, em "novaFuncao" não se guarda um objeto e sim uma nova função.
+Portanto, o JS pensa: "Não vou executar agora, criei uma nova função que quando for chamada usará "carro" como contexto de this.
+```
+novaFuncao();
+```
+Executa, agora this = carro.
+

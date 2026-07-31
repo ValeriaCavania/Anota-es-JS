@@ -267,3 +267,13 @@ novaFuncao();
 ```
 Executa, agora this = carro.
 
+O bind vai resolver esse problema: "Quero guardar determinada função em uma variável, mas sem perder o this":
+```
+const executar = cachorro.latir;
+executar();
+```
+executar() retorna undefined, porque o this é o objeto global window.
+Agora, usando bind():
+```
+const selecionar = document.querySelectorAll.bind(document);
+```

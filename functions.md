@@ -184,10 +184,12 @@ Seguindo o exemplo da aula:
 ```
 descricaoCarro.call(carro);
 ```
-É possível entender que o JS fez a função "olhar" para o objeto carro. Toda FUNÇÃO possui o método call(), nesse caso, está usando o método call na função descricaoCarro. Isso não significa que "carro chamou a função". E sim que: "A função usou o seu método call() para definir que será o this". Portanto, a função usa o método call para definir quem será o this apenas durante a execução, ou seja, executar descricaoCarro() utilizando o objeto livro como CONTEXTO de this.
+É possível entender que o JS fez a função "olhar" para o objeto carro. Toda FUNÇÃO possui o método call(), nesse caso, está usando o método call na função descricaoCarro. Isso não significa que "carro chamou a função". E sim que: "A função usou o seu método call() para definir quem será o this". Portanto, a função usa o método call para definir quem será o this apenas durante a execução, ou seja, executar descricaoCarro() utilizando o objeto livro como CONTEXTO de this.
 
 O call() pode receber mais argumentos - Sintaxe completa:
 ```
 funcao.call(this, arg1, arg2, arg3...)
 ```
-
+Exemplo:
+```
+```

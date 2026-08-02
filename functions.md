@@ -278,3 +278,14 @@ Agora, usando bind():
 const selecionar = document.querySelectorAll.bind(document);
 ```
 O que o bind() fez foi criar uma nova função que já nasce com o this = document.
+
+O bind() é útil para quando se tem uma função e toda vez a utiliza com um determinado argumento em comum, é possível fazer um bind com esse argumento em comum e criar uma nova função (uma variável que recebe a função). Exemplo: O médico na hora de calcular o IMC só atende pacientes com exatos 1.80m de altura:
+```
+function imc(altura, peso){
+  return peso / (altura * altura);
+}
+const imc180 = imc.bind(null, 1.80);
+imc(1.80, 70); // 21.6
+imc180(70); // 21.6 
+```
+Primeiro argumento é null, porque se trata de uma função pura que não tem referência a nenhum objeto, apenas ao window que não se está manipulando nesse caso. O segundo argumento será o padrão, o valor que não muda.

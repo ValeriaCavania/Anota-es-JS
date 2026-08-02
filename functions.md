@@ -277,3 +277,4 @@ Agora, usando bind():
 ```
 const selecionar = document.querySelectorAll.bind(document);
 ```
+O que o bind() fez foi criar uma nova função que já nasce com o this = document.

@@ -1,4 +1,4 @@
-**Object**
+**Object**: Todo Objeto é criado com o construtor Object e por isso herda as propriedades e métodos do seu prototype.
 Em JavaScript praticamente tudo é um objeto.
 String, array, function, date, regexp são objetos e todos foram criados com o construtor Object.
 Exemplo: Object -> Array -> frutas = ["Banana", "Uva"];
@@ -39,4 +39,10 @@ init(valor){
   return this;
 }
 ```
-Quem é o this? Depende de quem chamou. Se fi
+Quem é o this? Depende de quem chamou. Por exemplo? honda.init("Honda"), então this === honda, logo:
+this.marca = "Honda" vira honda.marca = "Honda", em seguida: return this = return honda.
+Por isso funciona:
+```
+const ferrari = Object.create(carro).init(ferrari);
+```
+Porque Object.create() -> gera objeto -> init() -> retorna o próprio objeto -> atribui na variável.

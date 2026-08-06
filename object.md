@@ -17,7 +17,7 @@ const pessoa = {
 ```
 Hoje é mais comum escrever de acordo com o segundo exemplo, mas o primeiro mora que todos os objetos são criados pelo construtor Object.
 
-2)Object.create():
+## 1)Object.create() ##
 ```
 const carro = {
   acelerar() {},
@@ -34,7 +34,7 @@ honda.acelerar();
 O JS procura essa propriedade acelerar em honda, mas não existe, então procura dentro do protótipo, que existe e executa, esse é o mecanismo de herança. Em outras palavras, o JS faz uma busca nessa sequência:
 honda.acelerar() --> existe acelerar em honda? --> não --> existe no protótipo? --> sim --> executa a função. Portanto, quando uma propriedade não existe no objeto o JS sobe para o protótipo.
 
-3) Init():
+## 2) Init() ##
 ```
 init(valor){
   this.marca = valor;
@@ -49,7 +49,7 @@ const ferrari = Object.create(carro).init(ferrari);
 ```
 Porque Object.create() -> gera objeto -> init() -> retorna o próprio objeto -> atribui na variável.
 
-4)Object.assign():
+## 3)Object.assign() ##
 ```
 const FuncaoAutomovel ={
   acelerar(){

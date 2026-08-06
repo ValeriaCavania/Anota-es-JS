@@ -1,4 +1,4 @@
-##Object##
+## Object ##
 Todo Objeto é criado com o construtor Object e por isso herda as propriedades e métodos do seu prototype.
 Em JavaScript praticamente tudo é um objeto.
 String, array, function, date, regexp são objetos e todos foram criados com o construtor Object.

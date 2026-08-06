@@ -128,4 +128,73 @@ console.log(honda.hasOwnProperty("acelerar"));
 ```
 O resultado do console nesse caso será true, porque honda agora possui a propriedade acelerar por conta do assign que copia as propriedades de carro para dentro de honda.
 
-5) Object.defineProperty() / Object.definePorperties():
+## 4) Object.defineProperty() / Object.definePorperties() ##
+Quando se cria um objeto como no exemplo:
+```
+const carro = {
+  rodas: 4
+};
+```
+Internamente, no JS o objeto carro possui outras informações, além da propriedade rodas, como por exemplo:
+rodas
+│
+├── value: 4 - Valor da propriedade.
+├── writable: true - Permite alterar o valor da propriedade (carros.rodas = 6), se fosse false, então não seria possível alterar.
+├── configurable: true - Permite deletar (delete.carro.rodas), mas se fosse false, não seria possível deletar, além disso impede que redefina os descritores posterioremnte.
+└── enumerable: true - Se carro fosse:
+```
+const carro = {
+  marca: "Honda",
+  ano:2024
+};
+Object.keys(carro);
+```
+O resultado da última linha seria: ["marca","ano"] porque enumerable é true para marca e ano, mas se fosse false, então a última linha retornaria apenas ["ano"]. A propriedade marca continuaria existindo, ela só fica "escondida" para métodos que percorrem propriedades enumeráveis.
+Ao declarar:
+```
+Object.defineProperties(motos, {
+  rodas: {
+    value: 2,
+    configurable: false,
+    writable: true,
+    enumerable: true
+  }
+});
+```
+Isso significa: Recria a propriedade "rodas", mas agora controlando suas configurações internas. No exemplo, configurable false não permite apagar, writable true pode alterar o valor e enumerable true aparece no object.keys.
+A frase "Todas as propriedades do objeto são mutávies" acontece para objetos criados normalmente (writable = true) e funciona porque o Object.defineProperty existe justamente para mudar esse comportamento padrão.
+**teste**:
+```
+Object.defineProperty(carro, "rodas",{
+  value: 4,
+  writable: false
+});
+carro.rodas = 8;
+```
+A última linha não vai aplicar, porque a configuração do Object.defineProperty define o writable como false. O valor continuará sendo 4. 
+O enumerable e configurable não mantem o valor padrão true, nesse caso todas as configurações que não forem informadas passam a ser false por padrão quando foi craida com defineProperty().
+
+
+## 5) Get e Set ##
+Exemplo:
+```
+const pessoa = {
+  nome: "Valéria",
+  get saudacao(){
+    return `Ola, ${this.nome}`;
+  }
+};
+console.log(pessoa.saudacao);
+```
+Percebe-se que não foi chamada a função (não foi escrito assim: pessoa.saudacao() e mesmo assim a função foi executada. --> isso é o get.
+Exemplo:
+```
+const pessoa = {
+  _idade: 27,
+  set idade(valor){
+    this._idade = valor;
+  }
+};
+pessoa.idade = 30;
+```
+Nesse caso o JS não criou simplesmente idade = 30, na verdade fez: set idade(30). Por de baixo dos panos foi executado uma função get e set nesses dois casos.

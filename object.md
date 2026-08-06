@@ -120,3 +120,12 @@ const honda = Object.create(carro);
 console.log(honda.hasOwnProperty("acelerar"));
 ```
 O resultado do console, será false, porque honda não possui esse método acelerar. Existe apenas dentro do protótipo, ou seja: O JavaScript procura a propriedade acelerar em honda, mas não existe, então procura dentro do protótipo, que existe e executa, esse é o mecanismo de herança.
+
+```
+const honda = {};
+Object.assign(honda, carro);
+console.log(honda.hasOwnProperty("acelerar"));
+```
+O resultado do console nesse caso será true, porque honda agora possui a propriedade acelerar por conta do assign que copia as propriedades de carro para dentro de honda.
+
+5) Object.defineProperty() / Object.definePorperties():

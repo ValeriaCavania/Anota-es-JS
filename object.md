@@ -226,7 +226,7 @@ Depois o Get:
 console.log(carros.rodas);
 ```
 O JS executa o get() que retorna this._rodas, ou seja, "8 Total Rodas".
-** Por que getter usa _rodas? **
+**Por que getter usa _rodas?**
 Se o código fosse assim:
 ```
 get(){

@@ -198,3 +198,39 @@ const pessoa = {
 pessoa.idade = 30;
 ```
 Nesse caso o JS não criou simplesmente idade = 30, na verdade fez: set idade(30). Por de baixo dos panos foi executado uma função get e set nesses dois casos.
+Exemplo:
+```
+Object.defineProperties(carros, {
+  rodas: {
+    enumerable: true,
+
+    get() {
+      return this._rodas;
+    },
+
+    set(valor) {
+      this._rodas = valor * 4 + " Total Rodas";
+    },
+  },
+});
+carros.rodas = 2;
+```
+Ao declarar a última linha, o JS transforma essa atribuição em uma chamada setter: set(2) e executa:
+```
+this._rodas = 2 * 4 + " Total Rodas";
+this._rodas = "8 Total Rodas;
+```
+Percebe-se então que o valor armazenado não é 2, mas 8 Total Rodas. 
+Depois o Get:
+```
+console.log(carros.rodas);
+```
+O JS executa o get() que retorna this._rodas, ou seja, "8 Total Rodas".
+** Por que getter usa _rodas? **
+Se o código fosse assim:
+```
+get(){
+  return this.rodas;
+}
+```
+Seguindo o raciocínio: Ler rodas --> executa o get --> get tenta ler rodas --> executa o get de novo --> o get tenta ler rodas --> ∞. Isso entraria em uma recursão infinita, por isso usa-se _rodas para armazenar o valor "real".

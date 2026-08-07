@@ -3,7 +3,7 @@ Todo Objeto é criado com o construtor Object e por isso herda as propriedades e
 Em JavaScript praticamente tudo é um objeto.
 String, array, function, date, regexp são objetos e todos foram criados com o construtor Object.
 Exemplo: Object -> Array -> frutas = ["Banana", "Uva"];
-1)Object():
+## Object(): ##
 ```
 const pessoa = new Object({
   nome: "Valéria";

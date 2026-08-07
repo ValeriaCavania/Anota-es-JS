@@ -163,7 +163,7 @@ Object.defineProperties(motos, {
 ```
 Isso significa: Recria a propriedade "rodas", mas agora controlando suas configurações internas. No exemplo, configurable false não permite apagar, writable true pode alterar o valor e enumerable true aparece no object.keys.
 A frase "Todas as propriedades do objeto são mutávies" acontece para objetos criados normalmente (writable = true) e funciona porque o Object.defineProperty existe justamente para mudar esse comportamento padrão.
-**teste**:
+** Teste **:
 ```
 Object.defineProperty(carro, "rodas",{
   value: 4,

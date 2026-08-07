@@ -15,7 +15,7 @@ const pessoa = {
   nome: "Valéria";
 }
 ```
-Hoje é mais comum escrever de acordo com o segundo exemplo, mas o primeiro mora que todos os objetos são criados pelo construtor Object.
+Hoje é mais comum escrever de acordo com o segundo exemplo, mas o primeiro mostra que todos os objetos são criados pelo construtor Object.
 
 ## 1)Object.create() ##
 ```

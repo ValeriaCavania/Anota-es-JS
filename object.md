@@ -137,11 +137,13 @@ const carro = {
 ```
 Internamente, no JS o objeto carro possui outras informações, além da propriedade rodas, como por exemplo:
 rodas
+```
 │
 ├── value: 4 - Valor da propriedade.
 ├── writable: true - Permite alterar o valor da propriedade (carros.rodas = 6), se fosse false, então não seria possível alterar.
 ├── configurable: true - Permite deletar (delete.carro.rodas), mas se fosse false, não seria possível deletar, além disso impede que redefina os descritores posterioremnte.
 └── enumerable: true - Se carro fosse:
+```
 ```
 const carro = {
   marca: "Honda",

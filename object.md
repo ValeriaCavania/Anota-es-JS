@@ -234,3 +234,98 @@ get(){
 }
 ```
 Seguindo o raciocínio: Ler rodas --> executa o get --> get tenta ler rodas --> executa o get de novo --> o get tenta ler rodas --> ∞. Isso entraria em uma recursão infinita, por isso usa-se _rodas para armazenar o valor "real".
+
+
+## 6) Object.getOwnPropertyDescriptors() ##
+Esse método serve para verificar as configurações (value, writable, configurable e enumerable) de um objeto.
+```
+const carro = {
+  rodas: 4
+};
+```
+O resultado:
+```
+{
+  rodas: {
+    value: 4,
+    writable: true,
+    enumerable: true,
+    configurable: tue
+  }
+}
+```
+Ou seja, defineProperties() configura as propriedades e getOwnPropertyDescriptors() consulta como elas estão configuradas.
+
+## 7) Object.keys(), values() e entries() ##
+```
+const camaro = {
+  marca: "Camaro",
+  ano: 2018
+};
+```
+**Object.keys()** Quer as chaves: ["marca", "ano"];
+**Object.values()** Quer os valores: ["Camaro", 2018];
+**Object.entries()** Quer os dois juntos:
+```
+[
+  ["marca","camaro"], ["ano", 2018]
+]
+```
+É importante relembrar que o Object.keys() as propriedades enumeráveis desse objeto. Por isso métodos que estão no protótipo não aparecem. Por exemplo:
+```
+Object.keys(Array);
+```
+retorna [], porque mesmo que Array tenha propriedades como: length, name, prototype, isArray, from, of... essas propriedades não são numeráveis. 
+
+## 8)Object.getOwnPropertyNames() ##
+Retorna todas as propriedades sejam enumeráveis ou não. Diferente do Object.keys() que só retorna as enumeráveis.
+
+
+## 9)Object.getPrototypeOf() ##
+Responde: Qual é o protótipo desse objeto?
+Exemplo:
+```
+const frutas = ["Banana","Pera"];
+Object.getPrototypeOf(frutas);
+```
+Retorna: Array.prototype, pois esse é o objeto imediatamente acima de frutas na cadeia de protótipos.
+Frutas --> Array.prototype --> Object.prototype --> null
+
+## 10)Object.is() ##
+Objetos são comparados pela referência e não pelo conteúdo.
+```
+const frutas1 = ["Banana", "Pêra"];
+const frutas2 = ["Banana", "Pêra"];
+```
+Apesar de terem exatamente o mesmo conteúdo:
+```
+Objecy.is(frutas1, frutas2);
+```
+Retorna false, porque são dois objetos diferentes.
+Agora:
+```
+const novaFrutas = frutas1;
+```
+O array frutas1 e novaFruta apontam para o mesmo array. Então: 
+```
+Object.is(frutas1, novaFruta);
+```
+Retorna true.
+
+## 11) freeze, seal e preventExtensions ##
+São 3 formas de proteção/modificam o estado.
+```
+const filme = {
+  obra: "Crepusculo",
+  ano: 2008
+};
+```
+**Object.preventExtensions()** significa que não se pode mais adicionar propriedades novas, mas ainda pode alterar e deletar as existentes.
+**Object.seal()** significa que não pode adicionar nem deletar propriedades, mas pode alterar as existentes.
+**Object.freeze()** significa que não pode adicionar, deletar e nem alterar propriedades, sendo o mais restritivos dos três.
+Agora os métodos que consultam o estado.
+```
+Object.isFrozen(objeto);
+Object.isSealed(objeto);
+Object.isExtensible(objeto);
+```

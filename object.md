@@ -271,7 +271,7 @@ const camaro = {
   ["marca","camaro"], ["ano", 2018]
 ]
 ```
-É importante relembrar que o Object.keys() as propriedades enumeráveis desse objeto. Por isso métodos que estão no protótipo não aparecem. Por exemplo:
+É importante relembrar que o Object.keys() retorna as propriedades enumeráveis desse objeto. Por isso métodos que estão no protótipo não aparecem. Por exemplo:
 ```
 Object.keys(Array);
 ```

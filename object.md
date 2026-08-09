@@ -329,6 +329,44 @@ Object.isFrozen(objeto);
 Object.isSealed(objeto);
 Object.isExtensible(objeto);
 ```
-
-
 _________________________________________________________________________________
+
+## hasOwnProperty()##
+```
+frutas.hasOwnProperty("map");
+```
+A propriedade map pertence diretamente a frutas? False, porque map vem do Array.prototype.
+
+## propertyIsEnumerable() ##
+"Essa propriedade é me pertence e é enumerável?"
+```
+Array.prototype.propertyIsEnumerable("map");
+```
+False, porque map pertence a Array.prototype, mas não é enumerável.
+
+## isPrototypeOf() ##
+Array.prototype.isPrototypeOf(frutas) --> "Array.prototype é protótipo de frutas?" true.
+
+## toString() ##
+```
+frutas.toString();
+```
+Resulta em "Banana, Pêra". Isso é uma representação textual do array. Isso não diz necessariamente que esse objeto é um array. Então como fazer essa identificação do tipo com toString()?
+Usa-se:
+```
+Object.prototype.toString().call(frutas);
+```
+A primeira parte pertence ao Object.prototype e o call permite definir quem será o this. Então é como dizer: "Execute o toString do Object.prototype, mas faça o this ser frutas."
+Resultado:
+```
+"[object Array]
+```
+Exemplos:
+```
+Object.prototype.tostring.call("olá");
+```
+Retorna: "[object String];
+```
+Object.prototype.toString.call(function(){});
+```
+Retorna: "[object Function]

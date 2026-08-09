@@ -338,7 +338,7 @@ frutas.hasOwnProperty("map");
 A propriedade map pertence diretamente a frutas? False, porque map vem do Array.prototype.
 
 ## propertyIsEnumerable() ##
-"Essa propriedade é me pertence e é enumerável?"
+"Essa propriedade me pertence e é enumerável?"
 ```
 Array.prototype.propertyIsEnumerable("map");
 ```

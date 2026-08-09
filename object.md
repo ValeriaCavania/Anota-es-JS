@@ -331,7 +331,7 @@ Object.isExtensible(objeto);
 ```
 _________________________________________________________________________________
 
-## hasOwnProperty()##
+## hasOwnProperty() ##
 ```
 frutas.hasOwnProperty("map");
 ```

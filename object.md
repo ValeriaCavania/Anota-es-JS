@@ -322,10 +322,13 @@ const filme = {
 ```
 **Object.preventExtensions()** significa que não se pode mais adicionar propriedades novas, mas ainda pode alterar e deletar as existentes.
 **Object.seal()** significa que não pode adicionar nem deletar propriedades, mas pode alterar as existentes.
-**Object.freeze()** significa que não pode adicionar, deletar e nem alterar propriedades, sendo o mais restritivos dos três.
+**Object.freeze()** significa que não pode adicionar, deletar e nem alterar propriedades, sendo o mais restritivo dos três.
 Agora os métodos que consultam o estado.
 ```
 Object.isFrozen(objeto);
 Object.isSealed(objeto);
 Object.isExtensible(objeto);
 ```
+
+
+_________________________________________________________________________________
